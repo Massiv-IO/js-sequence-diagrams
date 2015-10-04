@@ -20,10 +20,10 @@
 var DIAGRAM_MARGIN = 10;
 
 var ACTOR_MARGIN   = 10; // Margin around a actor
-var ACTOR_PADDING  = 10; // Padding inside a actor
+var ACTOR_PADDING  = 20; // Padding inside a actor
 
 var SIGNAL_MARGIN  = 5; // Margin around a signal
-var SIGNAL_PADDING = 5; // Padding inside a signal
+var SIGNAL_PADDING = 10; // Padding inside a signal
 
 var NOTE_MARGIN   = 10; // Margin around a note
 var NOTE_PADDING  = 5; // Padding inside a note
@@ -142,9 +142,13 @@ _.extend(BaseTheme.prototype, {
 			a.text_bb = bb;
 
 			//var bb = t.attr("text", a.name).getBBox();
+			bb.width = (a.name.length * 6);
 			a.x = 0; a.y = 0;
-			a.width  = bb.width  + (ACTOR_PADDING + ACTOR_MARGIN) * 2;
-			a.height = bb.height + (ACTOR_PADDING + ACTOR_MARGIN) * 2;
+			a.width = bb.width + ((ACTOR_PADDING + ACTOR_MARGIN) * 2);
+            a.height = bb.height + ((ACTOR_PADDING + ACTOR_MARGIN) * 2);
+
+			// a.width  = bb.width  + (ACTOR_PADDING + ACTOR_MARGIN) * 2;
+			// a.height = bb.height + (ACTOR_PADDING + ACTOR_MARGIN) * 2;
 
 			a.distances = [];
 			a.padding_right = 0;

@@ -10,11 +10,12 @@ if (Snap) {
 
 	var LINE = {
 		'stroke': '#000000',
-		'stroke-width': 2
+		'stroke-width': 1
 	};
 
 	var RECT = _.extend(LINE, {
-		'fill': "#fff"
+        'fill': "#D8D8D8",     
+        'rx': '5', 'ry': '5'
 	});
 
 	/******************
@@ -127,8 +128,8 @@ if (Snap) {
 
 		init_font : function() {
 			this._font = {
-				'font-size': 16,
-				'font-family': 'Andale Mono, monospace'
+				'font-size': 10,
+				'font-family': 'monospace'
 			};
 		},
 
@@ -207,8 +208,11 @@ if (Snap) {
 			var bb = t.getBBox();
 
 			if (align == ALIGN_CENTER) {
-				x = x - bb.width / 2;
-				y = y - bb.height / 2;
+				x = x - (text.length * 6) / 2;
+                y = y - (bb.height / 2) + 3;
+
+				// x = x - bb.width / 2;
+				// y = y - bb.height / 2;
 			}
 
 			// draw a rect behind it
@@ -220,7 +224,7 @@ if (Snap) {
 
 			// Now move the text into place
 			// `y - bb.y` because text(..) is positioned from the baseline, so this moves it down.
-			t.attr({x: x - bb.x, y: y - bb.y});
+			t.attr({x: x, y: y - bb.y});
 			t.selectAll("tspan").attr({x: x});
 
 			this.push_to_stack(t);
@@ -270,8 +274,8 @@ if (Snap) {
 	_.extend(SnapHandTheme.prototype, SnapTheme.prototype, {
 		init_font : function() {
 			this._font = {
-				'font-size': 16,
-				'font-family': 'daniel'
+				'font-size': 10,
+				'font-family': 'monospace'
 			};
 		},
 
